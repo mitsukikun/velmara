@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELMARA — An Open-World Crime Game</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<canvas id="game" aria-label="Velmara: an open-world crime game. Drive, steal cars, dodge the police and run missions across the city."></canvas>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="damage-flash"></div>
+
+<!-- In-game HUD -->
+<div id="hud" style="display:none">
+  <div id="top-left">
+    <div id="health-bar"><div id="health-fill"></div><span id="health-text">100</span></div>
+    <div id="cash-box">$<span id="cash-text">0</span></div>
+    <div id="clock">17:30</div>
+  </div>
+  <div id="wanted-box">
+    <div id="stars"></div>
+    <div id="evade">EVADING…</div>
+  </div>
+  <div id="mission-box">
+    <div id="mission-title">VELMARA</div>
+    <div id="objective"></div>
+  </div>
+  <div id="dialog"></div>
+  <div id="toast"></div>
+  <div id="hint"></div>
+  <div id="bottom-right">
+    <div id="speed-box" style="display:none"><span id="speed">0</span><span class="unit"> km/h</span></div>
+    <div id="weapon-box"><span id="weapon">PISTOL</span> · <span id="ammo">12 / 48</span></div>
+  </div>
+  <canvas id="minimap" width="190" height="190"></canvas>
+  <div id="crosshair" style="display:none">+</div>
+</div>
+
+<!-- Title screen -->
+<div id="title-screen">
+  <div class="panel">
+    <h1>VELMARA</h1>
+    <p class="tagline">Sun, sand &amp; stolen cars.</p>
+    <p class="story">Kai Mercer is back in Velmara — broke, wanted, and one favour away from
+      the biggest score the city has ever seen. Drive it, steal it, outrun it.</p>
+    <button id="btn-new" class="big">▶ New Game</button>
+    <button id="btn-continue" class="big" style="display:none">Continue</button>
+    <button id="btn-how" class="big ghost">How to play</button>
+    <div id="howto" style="display:none">
+      <p><b>W A S D</b> move / drive &nbsp;·&nbsp; <b>Shift</b> sprint &nbsp;·&nbsp; <b>Space</b> jump / handbrake</p>
+      <p><b>Mouse</b> look (click the game to lock) &nbsp;·&nbsp; <b>Left click</b> shoot / punch</p>
+      <p><b>Right click</b> aim &nbsp;·&nbsp; <b>E</b> enter / steal a car &nbsp;·&nbsp; <b>Q</b> swap weapon &nbsp;·&nbsp; <b>R</b> reload</p>
+      <p><b>Esc / P</b> pause &nbsp;·&nbsp; <b>M</b> mute &nbsp;·&nbsp; Follow the <span class="gold">yellow marker</span> for missions.</p>
+      <p>Progress saves automatically. Stealing cars, hitting pedestrians and shooting raise your wanted level.</p>
+    </div>
+    <p class="fine">An original game. No assets, names or music from any commercial game.</p>
+  </div>
+</div>
+
+<!-- Pause menu -->
+<div id="pause-menu" style="display:none">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <button id="btn-resume" class="big">Resume</button>
+    <button id="btn-save" class="big ghost">Save game</button>
+    <button id="btn-mute" class="big ghost">Sound: On</button>
+    <button id="btn-restart" class="big ghost">Restart story</button>
+    <button id="btn-quit-title" class="big ghost">Quit to title</button>
+  </div>
+</div>
+
+<!-- Wasted / busted / complete -->
+<div id="end-screen" style="display:none">
+  <div class="panel">
+    <h2 id="end-title">WASTED</h2>
+    <p id="end-text"></p>
+    <button id="btn-end" class="big">Respawn</button>
+    <button id="btn-end-title" class="big ghost">Quit to title</button>
+  </div>
+</div>
+
+<script src="./vendor/three.min.js"></script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
